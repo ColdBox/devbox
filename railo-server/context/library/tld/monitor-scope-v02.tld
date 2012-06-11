@@ -1,0 +1,64 @@
+<!DOCTYPE taglib PUBLIC "-//Railo//DTD CFML Tag Library 1.0//EN"
+	"dtd/web-cfmtaglibrary_1_0.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<cfml-version>1.0</cfml-version>
+	<short-name>monitor</short-name>
+	<uri>http://www.railo.ch/controller</uri>
+	<display-name>Monitor</display-name>
+	<description/>
+	<name-space>cf</name-space>
+	<name-space-separator></name-space-separator>
+	<el>
+		<el-class>railo.transformer.cfml.expression.CFMLExprTransformer</el-class>
+	</el>
+	
+	
+	<!-- MonitorScope --> 
+	<tag>
+		<name>MonitorScope</name>
+		<tag-class>railo.extension.monitor.scope.v02.TagMonitorScope</tag-class>
+		<body-content>empty</body-content>
+		<body-rtexprvalue>false</body-rtexprvalue>
+		<description></description>
+		<attribute-type>fixed</attribute-type>
+		<attribute>
+			<type>string</type>
+			<name>serverpassword</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>password for the server admin. needed for action "scopes"</description>
+		</attribute>
+		<attribute>
+			<type>string</type>
+			<name>scopeName</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>name of the scope, used for action scope.</description>
+		</attribute>
+		<attribute>
+			<type>string</type>
+			<name>appContextName</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>name of the application context, used for action scope.</description>
+		</attribute>
+		<attribute>
+			<type>string</type>
+			<name>webContextName</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>name of the web context, used for action scope.</description>
+		</attribute>
+		
+		<attribute>
+			<type>string</type>
+			<name>returnvariable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Name of a variable for the result.</description>
+		</attribute>
+	</tag>
+	
+	
+</taglib>

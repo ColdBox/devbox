@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages action="monitor" position="6">
+	<language key="de">
+		<group>Monitor</group>
+		<title>Scopes</title>
+		<description></description>
+		
+	</language>
+	<language key="en">
+		<group>Monitor</group>
+		<title>Scopes</title>
+		<description>Shows how many objects are stored in all persistent scopes. This does not reflect the size of the data itself yet, only the number of objects is defined.</description>
+		<custom key="byType">Separated by scope type</custom>
+		<custom key="byTypeDesc">Shows how many elements are across all contexts separated by the scope type.</custom>
+		<custom key="byContext">Separated by web context</custom>
+		<custom key="byContextDesc">Shows how many elements are in the specific web contexts.</custom>
+		<custom key="scopeNames">Scopes</custom>
+		<custom key="scopeName">Scope</custom>
+		<custom key="contextNames">Web Contexts</custom>
+		<custom key="contextName">Web Context</custom>
+		<custom key="contextNameDesc">Name of the Web Context</custom>
+		<custom key="servScope">Server Scope</custom>
+		<custom key="servScopeDesc">There is only one server scope for all web contexts.</custom>
+		<custom key="servObjDesc">Object count in the server scope.</custom>
+		<custom key="appScope">Application Scope</custom>
+		<custom key="appScopeDesc">There is one application scope for every application context defined in every web context.</custom>
+		<custom key="sessScope">Session Scope</custom>
+		<custom key="sessScopeDesc">Every Application Contxt in every Web Context can have multiple sessions.</custom>
+		<custom key="scopes">Scopes</custom>
+		<custom key="scopesDesc">Number of scopes defined inside this application context.</custom>
+		<custom key="appName">Application names</custom>
+		<custom key="appNameDesc">Name of the Application Context.</custom>
+		<custom key="count">Elements in the scope</custom>
+		<custom key="countDesc">Number of elements in this scope (recursive count)</custom>
+		<custom key="percentage">Percentage</custom>
+		<custom key="percentageDesc">Percentage of this scope.</custom>
+		<custom key="percentageAll">Percentage</custom>
+		<custom key="percentageAllDesc">Percentage of all scopes of this type compared to all web contexts.</custom>
+		<custom key="counts">Elements in this Scopes</custom>
+		<custom key="countsDesc">Element count in all scopes of this type in the application context</custom>
+		<custom key="countAll">Element Count</custom>
+		<custom key="countAllDesc">Element count of all scopes of this type in all web contexts.</custom>
+		<custom key="size">Size</custom>
+		<custom key="sizeDesc">Size of the ccope</custom>
+		<custom key="subtotal">Sub Total</custom>
+		<custom key="total">Total</custom>
+		<custom key="sessionDesc">The session scope holds user specific data. Normally there are several sessions per application which should not be too big.</custom>
+		<custom key="applicationDesc">There should mostly be one application scope per web context. It normally contains a huge amount of data.</custom>
+		<custom key="serverDesc">The server scope is normally not used that often. It is application and context indepenent.</custom>
+	</language>
+</languages>

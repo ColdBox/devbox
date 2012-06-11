@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages action="monitor" position="6">
+	<language key="de">
+		<group>Monitor</group>
+		<title>Memory</title>
+		<description>Hier können Sie die Auslastung der verschiedenen Memory Beeiche einsehen.</description>
+		<custom key="btnUpdate">Erneuern</custom>
+	</language>
+	<language key="en">
+		<group>Monitor</group>
+		<title>Memory</title>
+		<description>This plugin logs the memory usage of the current Virtual Machine. You can change the time scale from 5 minutes up to 7 days to introspect the different Memory Types as required.
+		This Plugin is time retricted and will only work until the 2012/07/01.
+		</description>
+		
+		<custom key="non_Heap">None-Heap</custom>
+		<custom key="heap">Heap</custom>
+		<custom key="non_Heap_desc">Also, the JVM has memory other than the heap, referred to as non-heap memory. It stores all cfc/cfm templates, java classes, interned Strings and meta-data.</custom>
+		<custom key="heap_desc">The JVM (Java Virtual Machine) has a heap that is the runtime data area from which memory for all objects are allocated.</custom>
+		
+		<custom key="heap_devided">The Heap Space is also devided in different part, here you can see detail information to this parts.</custom>
+		<custom key="non_heap_devided">The Non Heap Space is also devided in different part, here you can see detail information to this parts.</custom>
+		
+		
+		
+		<custom key="show">Show</custom>
+		<custom key="historyRange">Time Range</custom>
+		<custom key="historyRangeDesc">Defines the time Range of the data displayed.</custom>
+		<custom key="the_last">the last ...</custom>
+		<custom key="from_to">from / to</custom>
+		
+		
+		
+		<custom key="PAR_EDEN_SPACE">The pool from which memory is initially allocated for most objects.</custom>
+		<custom key="PAR_SURVIVOR_SPACE">The pool containing objects that have survived the garbage collection of the Eden space.</custom>
+		<custom key="CMS_OLD_GEN">The pool containing objects that have existed for some time in the survivor space.</custom>
+		<custom key="CMS_PERM_GEN">The pool containing all the reflective data of the virtual machine itself, such as class and method objects. With Java VMs that use class data sharing, this generation is divided into read-only and read-write areas.</custom>
+		<custom key="CODE_CACHE">The HotSpot Java VM also includes a code cache, containing memory that is used for compilation and storage of native code.</custom>
+		
+		
+				
+		<custom key="free">Free</custom>
+		<custom key="used">Used</custom>
+		<custom key="currently">Currently</custom>
+
+		
+		
+		<custom key="logDisabled">Logging for memory is disabled, enable logging on the page "Settings".</custom>
+		<custom key="btnUpdate">Update</custom>
+		
+		
+		
+		
+		<custom key="time1m">1 Minute</custom>
+		<custom key="time5m">5 Minutes</custom>
+		<custom key="time15m">15 Minutes</custom>
+		<custom key="time30m">30 Minutes</custom>
+		<custom key="time1h">1 Hour</custom>
+		<custom key="time2h">2 Hours</custom>
+		<custom key="time4h">4 Hours</custom>
+		<custom key="time12h">12 Hours</custom>
+		<custom key="time1d">1 Day</custom>
+		<custom key="time2d">2 Days</custom>
+		<custom key="time3d">3 Days</custom>
+		<custom key="time4d">4 Days</custom>
+		<custom key="time5d">5 Days</custom>
+		<custom key="time6d">6 Days</custom>
+		<custom key="time7d">7 Days</custom>
+		
+		
+		<custom key="error_getmonitor">
+		You need to restart the Servlet Container (not only Railo) before you can use the App.
+		</custom>
+		
+		<custom key="error_hasRecords">
+		There are no records available for the defined time period, define a other time period.
+		</custom>
+	</language>
+</languages>
