@@ -6,7 +6,7 @@ This is the README file for the ColdBox DevBox
 ==============================================
 
 The ColdBox DevBox is a complete development environment for your ColdBox needs.
-It includes a fully configured J2EE application server called Resin 4 with Railo,
+It includes a fully configured J2EE application server, Resin 4 with Railo,
 the open source CFML engine, deployed for you.  We have also installed a few nice 
 plugins into your Railo Administrator for memory monitoring, scope monitor and 
 nice log viewers.
@@ -15,30 +15,35 @@ To start the DevBox you can either:
 Windows - Run resin.exe or the setup.exe to setup with Apache or IIS
 *nix - Run /bin/resin.sh
 
-The webroot physical path for your DevBox is:
+The webroot path for your DevBox is:
 /coldbox-devbox/webapps/ROOT
 
-The ColdBox 3.5.1 bundle has been deployed for you:
+The ColdBox bundle has been deployed for you:
 /coldbox-devbox/webapps/ROOT/coldbox
 
 The web address for your DevBox is:
 http://localhost:8081/index.cfm
 
-The DevBox has some more apps deployed for you:
-ColdBox Dashboard - http://localhost:8081/dashboard
+The DevBox has some more applications deployed for you:
+ColdBox Dashboard - http://localhost:8081/coldbox/dashboard
 ColdBox API Docs - http://localhost:8081/coldbox-docs
-ColdBox Samples Gallery - http://localhost:8081/coldbox/coldbox/samples
+ColdBox Samples Gallery - http://localhost:8081/coldbox/samples
 ColdBox Application Templates - http://localhost:8081/coldbox/ApplicationTemplates
 
 The web address for the Railo Administrator console is:
-http://localhost:8081/railo-context/admin/index.cfm
+http://localhost:8081/railo-context/admin/server.cfm
 
 The password for the Railo administrators are: coldbox
+
 The credentials for the Resin console is: admin/admin
 
 Questions should go to our mailing list or forums.
 
 https://groups.google.com/forum/?fromgroups#!forum/coldbox
+
+To change the port for the application server you must configure it
+in the following file:
+/coldbox-devbox/conf/resin.properties
 
 RESIN Documentation
 ==============================================

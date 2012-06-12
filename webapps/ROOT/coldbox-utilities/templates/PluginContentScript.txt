@@ -1,0 +1,18 @@
+/**
+* |pluginDescription|
+*/
+component |pluginPersistence|{
+	
+	|pluginName| function init(){
+		
+		// Plugin Properties
+		setPluginName("|pluginName|");
+		setPluginVersion("|pluginVersion|");
+		setPluginDescription("|pluginDescription|");
+		setPluginAuthor("|pluginAuthor|");
+		setPluginAuthorURL("|pluginAuthorURL|");
+		
+		return this;
+	}
+	
+}
