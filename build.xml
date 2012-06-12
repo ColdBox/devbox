@@ -12,7 +12,6 @@
 	
 	<!-- Build Labels -->
 	<tstamp prefix="start"/>
-	<property name="build.label" 		value="devbox-buildID-${start.DSTAMP}${start.TSTAMP}"/>
 	
 	<!-- Init -->
 	<target name="init" description="Init">
@@ -29,10 +28,7 @@
 	
 	<!--build-->
 	<target name="build" description="Build a new devbox distribution" depends="init,cleanup">
-      	<!-- Copy build ID -->
-		<concat destfile="${build.label}">Built on ${start.TODAY}</concat>
-		
-		<!-- Download ColdBox Bundle -->
+      	<!-- Download ColdBox Bundle -->
 		<get dest="${dir.webroot}/coldbox_${coldbox.version}.zip" src="${web.coldbox}/coldbox_${coldbox.version}.zip" verbose="true"/>
 		<!-- Extract it -->
 		<unzip src="${dir.webroot}/coldbox_${coldbox.version}.zip" dest="${dir.webroot}/coldbox" />
