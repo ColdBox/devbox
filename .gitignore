@@ -1,2 +1,4 @@
 /settings.xml
 /.project
+webapps/ROOT/WEB-INF/railo/cfclasses/*.*
+webapps/ROOT/WEB-INF/railo/logs/*.*

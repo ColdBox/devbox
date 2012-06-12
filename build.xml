@@ -1,99 +1,44 @@
 ﻿<?xml version="1.0"?>
 <!-- ====================================================================== 
-     CacheBox Build                                                                
+     Copyright 2012 Ortus Solutions, Corp
+     DevBox Build                                                              
      ====================================================================== -->
-<project name="cachebox.newbuild" default="build" basedir="../../">
+<project name="devbox.build" default="build" basedir=".">
 
 	<!--Build Properties-->
-	<property name="dir.userlocation"	value="/Users/lmajano" />
-	<property name="dir.exports"		value="${dir.userlocation}/exports" />
-	<property name="dir.build" 			value="${dir.exports}/cachebox-distro" />
-	<property name="colddoc.http"		value="http://cf9tools.jfetmac/ColdDoc/cachebox.cfm?version=" />
-	
-	<!-- FTP -->
-	<property name="ftp.server"  		value="ftp.coldboxframework.com" />
-	<property name="ftp.remotedir" 		value="/httpdocs/builds" />
+	<property name="dir.webroot"		value="webapps/ROOT" />
+	<property name="web.coldbox" 		value="http://www.coldbox.org/builds" />
+	<property name="web.utilities"		value="http://www.coldbox.org/forgebox/download/ColdBox-Platform-Utilities" />
 	
 	<!-- Build Labels -->
 	<tstamp prefix="start"/>
-	<property name="build.label" 		value="cachebox-buildID-${start.DSTAMP}${start.TSTAMP}"/>
+	<property name="build.label" 		value="devbox-buildID-${start.DSTAMP}${start.TSTAMP}"/>
 	
 	<!-- Init -->
 	<target name="init" description="Init">
 		<!-- Version -->
-		<input addproperty="cachebox.version" message="CacheBox Version" />
-	</target>
-	
-	<!-- FTP Upload of new build -->
-	<target name="ftp.deploy" depends="build">
-       	<input message="Please enter ftp server username:" addproperty="ftp.username" />
-       	<input message="Please enter fpt server password:" addproperty="ftp.password" />
-      	
-		<ftp action="send" server="${ftp.server}" userid="${ftp.username}" password="${ftp.password}" 
-       		remotedir="${ftp.remotedir}" passive="yes" verbose="yes">
-        	<fileset file="${dir.exports}/cachebox_${cachebox.version}.zip" />
-       	</ftp>		
+		<input addproperty="coldbox.version" message="ColdBox Version To Build" />
 	</target>
 	
 	<!--build-->
-	<target name="build" description="Build a new cachebox distribution" depends="init">
-      	<delete dir="${dir.build}" />
+	<target name="build" description="Build a new devbox distribution" depends="init">
+      	<!-- Copy build ID -->
+		<concat destfile="${build.label}">Built on ${start.TODAY}</concat>
 		
-		<!-- Copy build ID -->
-		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
-		
-		<!-- Copy src to cachebox namespace-->	
-      	<copy todir="${dir.build}/cachebox/system/cache">
-        	<fileset dir="system/cache" />
-        </copy>
-		<copy todir="${dir.build}/cachebox/system/core">
-        	<fileset dir="system/core" />
-        </copy>
-		<copy todir="${dir.build}/cachebox/system/logging">
-        	<fileset dir="system/logging" />
-        </copy>
-		
-		<!-- Copy src to coldbox namespace -->
-		<copy todir="${dir.build}/coldbox/system/cache">
-        	<fileset dir="system/cache" />
-        </copy>
-		<copy todir="${dir.build}/coldbox/system/core">
-        	<fileset dir="system/core" />
-        </copy>
-		<copy todir="${dir.build}/coldbox/system/logging">
-        	<fileset dir="system/logging" />
-        </copy>
-		
-		<!-- Refactor cachebox namespace -->
-		<echo>Refactoring for coldbox absolute paths</echo>
-		<replace dir="${dir.build}" value="/cachebox/system/" summary="yes">
-		  	<include name="**/*.cfc" />
-			<include name="**/*.cfm" />
-			<include name="**/*.xml" />
-			<include name="**/*.css" />
-			<replacetoken>/coldbox/system/</replacetoken>
-		</replace>
-		<echo>Refactoring for coldbox instantitation and cfc paths</echo>
-		<replace dir="${dir.build}" value="cachebox.system." summary="yes">
-		  	<include name="**/*.cfc" />
-			<include name="**/*.cfm" />
-			<include name="**/*.xml" />
-			<include name="**/*.css" />
-			<replacetoken>coldbox.system.</replacetoken>
-		</replace>
-		
-		<!--Copy text files to root folder-->
-		<copy todir="${dir.build}/">
-			<fileset file="license.txt" />
-			<fileset file="system/cache/readme.txt" />						
-		</copy>
-		
-		<!-- Execute ColdDoc -->
-		<get dest="${dir.build}/colddoc.html" src="${colddoc.http}${cachebox.version}" verbose="true"/>
-		<delete file="${dir.build}/colddoc.html" />
-		
-		<!-- Zip Bundle -->
-		<zip destfile="${dir.exports}/cachebox_${cachebox.version}.zip" basedir="${dir.build}"></zip>
-		
+		<!-- Download ColdBox Bundle -->
+		<get dest="${dir.webroot}/coldbox_${coldbox.version}.zip" src="${web.coldbox}/coldbox_${coldbox.version}.zip" verbose="true"/>
+		<!-- Extract it -->
+		<unzip src="${dir.webroot}/coldbox_${coldbox.version}.zip" dest="${dir.webroot}/coldbox" />
+		<!-- Delete zip -->
+		<delete file="${dir.webroot}/coldbox_${coldbox.version}.zip" />
+		<!-- Extract API DOCS -->
+		<unzip src="${dir.webroot}/coldbox/ColdBoxDocs-${coldbox.version}.zip" dest="${dir.webroot}/coldbox-docs" />
+		<!-- ColdBox Platform Utilities -->
+		<get dest="${dir.webroot}/coldbox-utilities.zip" src="${web.utilities}" verbose="true"/>
+		<!-- Extract it -->
+		<unzip src="${dir.webroot}/coldbox-utilities.zip" dest="${dir.webroot}/coldbox-utilities" />
+		<!-- Delete zip -->
+		<delete file="${dir.webroot}/coldbox-utilities.zip" />
+			
     </target>
 </project>
