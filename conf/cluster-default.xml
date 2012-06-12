@@ -131,9 +131,14 @@
       <web-app-default>
         <prologue>
           <allow-servlet-el/>
-        </prologue>
+        </prologue>      
 
-         <!-- RAILO CFML SERVLET CONFIG -->
+        <servlet servlet-name="resin-file"
+           servlet-class="com.caucho.servlets.FileServlet"/>
+
+        <servlet servlet-name="resin-directory"
+            servlet-class="com.caucho.servlets.DirectoryServlet"/>
+
         <servlet servlet-name="CFMLServlet" servlet-class="railo.loader.servlet.CFMLServlet">
           <init-param>
             <param-name>railo-web-directory</param-name>
@@ -148,9 +153,10 @@
           <load-on-startup>1</load-on-startup>
         </servlet>
         <servlet servlet-name="AMFServlet" servlet-class="railo.loader.servlet.AMFServlet">
-          <load-on-startup>2</load-on-startup>
+          <load-on-startup>3</load-on-startup>
         </servlet>
 
+        <servlet-mapping url-pattern="/" servlet-name="resin-file"/>
         <servlet-mapping url-pattern="*.cfm" servlet-name="CFMLServlet"/>
         <servlet-mapping url-pattern="*.cfml" servlet-name="CFMLServlet"/>
         <servlet-mapping url-pattern="*.cfc" servlet-name="CFMLServlet"/>
@@ -158,10 +164,12 @@
         <servlet-mapping url-pattern="*.cfml/*" servlet-name="CFMLServlet"/>
         <servlet-mapping url-pattern="*.cfc/*" servlet-name="CFMLServlet"/>
         <servlet-mapping url-pattern="/flashservices/gateway/*" servlet-name="AMFServlet"/>
-      
-        <!-- Configures the special index files to check for directory URLs -->
+
         <welcome-file-list>
+          <welcome-file>index.html</welcome-file>
+          <welcome-file>index.htm</welcome-file>
           <welcome-file>index.cfm</welcome-file>
+          <welcome-file>index.cfml</welcome-file>
         </welcome-file-list>
 
         <!--

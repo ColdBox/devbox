@@ -11,24 +11,34 @@ the open source CFML engine, deployed for you.  We have also installed a few nic
 plugins into your Railo Administrator for memory monitoring, scope monitor and 
 nice log viewers.
 
-The webroot for your DevBox is:
+To start the DevBox you can either:
+Windows - Run resin.exe or the setup.exe to setup with Apache or IIS
+*nix - Run /bin/resin.sh
+
+The webroot physical path for your DevBox is:
 /coldbox-devbox/webapps/ROOT
 
 The ColdBox 3.5.1 bundle has been deployed for you:
 /coldbox-devbox/webapps/ROOT/coldbox
 
 The web address for your DevBox is:
-http://localhost:8081/
+http://localhost:8081/index.cfm
+
+The DevBox has some more apps deployed for you:
+ColdBox Dashboard - http://localhost:8081/dashboard
+ColdBox API Docs - http://localhost:8081/coldbox-docs
+ColdBox Samples Gallery - http://localhost:8081/coldbox/coldbox/samples
+ColdBox Application Templates - http://localhost:8081/coldbox/ApplicationTemplates
 
 The web address for the Railo Administrator console is:
 http://localhost:8081/railo-context/admin/index.cfm
 
-The password for the administrators are: coldbox
+The password for the Railo administrators are: coldbox
+The credentials for the Resin console is: admin/admin
 
 Questions should go to our mailing list or forums.
 
 https://groups.google.com/forum/?fromgroups#!forum/coldbox
-
 
 RESIN Documentation
 ==============================================
@@ -93,7 +103,7 @@ file is found in resin-4.0.x/conf/resin.xml.
 
        C:\> java -jar lib/resin.jar start
 
-     The server listens to port 8080.  Port 8080 is the default specified
+     The server listens to port 8081.  Port 8081 is the default specified
      in the configuration file resin-4.0.x/conf/resin.xml
 
      Log files are in resin-4.0.x/log
@@ -104,9 +114,9 @@ file is found in resin-4.0.x/conf/resin.xml.
      Starting Resin with -verbose is a great way to see what environment
      Resin is running.
 
-  4) Browse http://localhost:8080 or equivalently http://127.0.0.1:8080.
+  4) Browse http://localhost:8081 or equivalently http://127.0.0.1:8081.
 
-  5) Go through the documentation at http://localhost:8080/resin-doc
+  5) Go through the documentation at http://localhost:8081/resin-doc
 
 
 IV) Application Deployment
@@ -120,17 +130,17 @@ IV) Application Deployment
 
      To deploy a war file, place the file in resin-4.0.x/webapps/foo.war
      Resin will expand the war file, and the application will be available
-     with the url http://localhost:8080/foo/
+     with the url http://localhost:8081/foo/
 
   3) Resin supports the development of applications without requiring a war
      file deployment.  Create a directory resin-4.0.x/webapps/bar to
-     correspond to url http://localhost:8080/bar/.  Java source files
+     correspond to url http://localhost:8081/bar/.  Java source files
      placed in resin-4.0.x/webapps/bar/WEB-INF/classes/ are automatically 
      compiled by Resin.
 
      resin-4.0.x/webapps/bar/index.jsp
-       --> http://localhost:8080/bar/
-       --> http://localhost:8080/bar/index.jsp
+       --> http://localhost:8081/bar/
+       --> http://localhost:8081/bar/index.jsp
 
     resin-4.0.x/webapps/bar/WEB-INF/web.xml
        -- servlet/jsp configuration file
@@ -142,7 +152,7 @@ IV) Application Deployment
        -- java source file, automatically compiled by Resin
      
   4) For PHP, create test.php in resin-4.0.x/webapps/ROOT/test.php and browse
-     http://localhost:8080/test.php.
+     http://localhost:8081/test.php.
 
 
 IV) PDF Reports
@@ -163,6 +173,6 @@ V) /resin-admin browser-based administration
 
   An administration application is available at
 
-     http://localhost:8080/resin-admin
+     http://localhost:8081/resin-admin
 
   Instructions are provided for setting a password.

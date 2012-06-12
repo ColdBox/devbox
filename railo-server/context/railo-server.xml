@@ -228,7 +228,7 @@ Path placeholders:
 	<!--
 		enable and disable debugging
 	 -->
-	<debugging debug="true" log-memory-usage="no" memory-log="{railo-config}/logs/memory.log" show-query-usage="true" template="/railo-context/templates/debugging/debugging.cfm"/>
+	<debugging debug="false" log-memory-usage="no" memory-log="{railo-config}/logs/memory.log" show-query-usage="true" template="/railo-context/templates/debugging/debugging.cfm"/>
 	
 		<!--
 	application:

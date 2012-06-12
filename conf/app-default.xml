@@ -16,6 +16,10 @@
   <servlet servlet-name="resin-file"
            servlet-class="com.caucho.servlets.FileServlet"/>
 
+    <!-- RAILO CFML SERVLET CONFIG -->
+  <servlet servlet-name="resin-directory"
+            servlet-class="com.caucho.servlets.DirectoryServlet"/>
+
   <servlet servlet-name="resin-jsp"
            servlet-class="com.caucho.jsp.JspServlet">
     <init>
@@ -59,7 +63,6 @@
 
   <!-- Configures the special index files to check for directory URLs -->
   <welcome-file-list>
-    <welcome-file>index.cfm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.php</welcome-file>
     <welcome-file>index.html</welcome-file>
