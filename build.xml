@@ -20,8 +20,15 @@
 		<input addproperty="coldbox.version" message="ColdBox Version To Build" />
 	</target>
 	
+	<!-- Cleanup -->
+	<target name="cleanup" description="Cleanup for new build">
+		<delete dir="${dir.webroot}/coldbox" />
+		<delete dir="${dir.webroot}/coldbox-docs" />
+		<delete dir="${dir.webroot}/coldbox-utilities" />
+	</target>
+	
 	<!--build-->
-	<target name="build" description="Build a new devbox distribution" depends="init">
+	<target name="build" description="Build a new devbox distribution" depends="init,cleanup">
       	<!-- Copy build ID -->
 		<concat destfile="${build.label}">Built on ${start.TODAY}</concat>
 		
