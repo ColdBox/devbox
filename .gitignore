@@ -2,5 +2,6 @@
 /.project
 /webapps/ROOT/WEB-INF/railo/cfclasses/*.*
 /webapps/ROOT/WEB-INF/railo/logs/*.*
+/webapps/ROOT/WEB-INF/railo/temp/graph/*.*
 /log/*.*
 /railo-server/context/monitor/*.*
