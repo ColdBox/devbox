@@ -5,3 +5,6 @@
 /webapps/ROOT/WEB-INF/railo/temp/graph/*.*
 /log/*.*
 /railo-server/context/monitor/*.*
+
+/railo-server/context/monitor/memory.bin
+/log/access.log
