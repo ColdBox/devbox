@@ -1,10 +1,8 @@
 /settings.xml
 /.project
-/webapps/ROOT/WEB-INF/railo/cfclasses/*.*
-/webapps/ROOT/WEB-INF/railo/logs/*.*
-/webapps/ROOT/WEB-INF/railo/temp/graph/*.*
-/log/*.*
-/railo-server/context/monitor/*.*
-
-/railo-server/context/monitor/memory.bin
-/log/access.log
+/webapps/ROOT/WEB-INF/railo/cfclasses/
+/webapps/ROOT/WEB-INF/railo/logs/
+/webapps/ROOT/WEB-INF/railo/temp/
+log/
+/railo-server/context/monitor/
+resin-data/
