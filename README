@@ -48,7 +48,7 @@ in the following file:
 RESIN Documentation
 ==============================================
 The documentation included with Resin is in XTP format starting at
-http://localhost:8085/resin-doc/index.xtp.
+http://localhost:8081/resin-doc/index.xtp.
 
 For more information about configuring Resin, the full documentation is
 also available online at:
