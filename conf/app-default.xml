@@ -63,7 +63,8 @@
 
   <!-- Configures the special index files to check for directory URLs -->
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.cfm</welcome-file>
+	<welcome-file>index.jsp</welcome-file>
     <welcome-file>index.php</welcome-file>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>

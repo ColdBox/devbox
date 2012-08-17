@@ -166,10 +166,10 @@
         <servlet-mapping url-pattern="/flashservices/gateway/*" servlet-name="AMFServlet"/>
 
         <welcome-file-list>
-          <welcome-file>index.html</welcome-file>
-          <welcome-file>index.htm</welcome-file>
           <welcome-file>index.cfm</welcome-file>
           <welcome-file>index.cfml</welcome-file>
+		  <welcome-file>index.html</welcome-file>
+          <welcome-file>index.htm</welcome-file>
         </welcome-file-list>
 
         <!--
