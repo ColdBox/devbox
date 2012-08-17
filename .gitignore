@@ -7,3 +7,4 @@ log/
 /railo-server/context/monitor/
 resin-data/
 Icon*
+webapps/ROOT/coldbox/dashboard/logs
