@@ -62,7 +62,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="/coldbox-docs">
+										<a href="/coldbox-docs/index.html">
 											ColdBox API Docs
 										</a>
 									</li>
@@ -79,11 +79,6 @@
 									<li>
 										<a href="/railo-context/admin/server.cfm">
 											Railo Administrator
-										</a>
-									</li>
-									<li>
-										<a href="/resin-admin/index.php">
-											Resin Admin
 										</a>
 									</li>
 									<li class="divider">
@@ -155,7 +150,7 @@
 			
 			<h2>
 			ColdBox API Docs
-			<a href="coldbox-docs/">
+			<a href="coldbox-docs/index.html">
 				<button class="btn">
 					Open
 				</button>
@@ -222,19 +217,8 @@
 					</a>
 				</h2>
 				<p>
-				The password for the railo administrators is: 
-				<pre>coldbox</pre>
-				<h2>
-					Resin Administrator
-					<a href="/resin-admin/index.php">
-						<button class="btn">
-							Open
-						</button>
-					</a>
-				</h2>
-				<p>
-				The credentials for the Resin Administrator are: 
-				<pre>admin/admin</pre>
+				The password for the Railo administrators is: <code>coldbox</code> 
+				
 			</div>
 		</div>
 		<!-- /container -->
