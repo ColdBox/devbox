@@ -184,6 +184,7 @@
 				                <input type="checkbox" value="true" checked="checked" name="create_cfbuilder">
 				                Create CFBuilder Nature
 				              </label>
+				   
 				            </div>
 				    	</div>
 					    
@@ -191,7 +192,7 @@
 					
 				    <div class="modal-footer">
 				    	<a href="##" class="btn" data-dismiss="modal">Close</a>
-				  	  	<button type="submit" class="btn btn-primary">Submit</button>
+				  	  	<button type="submit" class="btn btn-primary">Create</button>
 				    </div>
 				</form>
 		    </div>
@@ -246,6 +247,17 @@
 						<td>All the API docs you will ever need.</td>
 						<td>
 							<a href="coldbox-docs/index.html">
+								<button class="btn btn-info">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>MXUnit</td>
+						<td>The best testing framework for ColdFusion.</td>
+						<td>
+							<a href="/mxunit">
 								<button class="btn btn-info">
 									Open
 								</button>
