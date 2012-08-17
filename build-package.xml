@@ -3,7 +3,7 @@
      Copyright 2012 Ortus Solutions, Corp
      DevBox Build                                                              
      ====================================================================== -->
-<project name="devbox.build" default="build" basedir=".">
+<project name="devbox.package" default="build" basedir=".">
 
 	<!--Build Properties-->
 	<property name="dir.userlocation"	value="/Users/lmajano" />
