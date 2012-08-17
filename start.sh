@@ -13,6 +13,7 @@
 # To install, you'll need to configure JAVA_HOME and RESIN_HOME and
 # copy contrib/init.resin to /etc/rc.d/init.d/resin.  Then
 # use "unix# /sbin/chkconfig resin on"
-bin/resin.sh start
 
+DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+$DIR/bin/resin.sh start
 echo You can now open your ColdBox DevBox at http://localhost:8081

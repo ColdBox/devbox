@@ -13,5 +13,5 @@
 # To install, you'll need to configure JAVA_HOME and RESIN_HOME and
 # copy contrib/init.resin to /etc/rc.d/init.d/resin.  Then
 # use "unix# /sbin/chkconfig resin on"
-bin/resin.sh stop
-
+DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+$DIR/bin/resin.sh stop
