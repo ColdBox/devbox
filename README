@@ -1,3 +1,4 @@
+ColdBox DevBox v1.0
 Copyright (c) 2012 Ortus Solutions, Corp
 www.ortussolutions.com
 www.coldbox.org
@@ -42,6 +43,12 @@ https://groups.google.com/forum/?fromgroups#!forum/coldbox
 To change the port for the application server you must configure it
 in the following file:
 /coldbox-devbox/conf/resin.properties
+
+==============================================
+ChangeLog
+==============================================
+Version 1.0 
+# Initial release
 
 ============================================================================================
 ============================================================================================

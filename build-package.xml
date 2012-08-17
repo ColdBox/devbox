@@ -19,7 +19,8 @@
 	
 	<!-- Init -->
 	<target name="init" description="Init">
-		
+		<!-- Version -->
+		<input addproperty="devbox.version" message="DevBox Version" />
 	</target>
 		
 	<!--build-->
@@ -40,7 +41,7 @@
         	</fileset>
         </copy>
 		
-		<zip destfile="${dir.exports}/coldbox-devbox.zip" basedir="${dir.build}"></zip>
+		<zip destfile="${dir.exports}/coldbox-devbox_${devbox.version}.zip" basedir="${dir.build}"></zip>
 						
     </target>
 </project>
