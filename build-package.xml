@@ -1,0 +1,46 @@
+﻿<?xml version="1.0"?>
+<!-- ====================================================================== 
+     Copyright 2012 Ortus Solutions, Corp
+     DevBox Build                                                              
+     ====================================================================== -->
+<project name="devbox.build" default="build" basedir=".">
+
+	<!--Build Properties-->
+	<property name="dir.userlocation"	value="/Users/lmajano" />
+	<property name="dir.exports"		value="${dir.userlocation}/exports" />
+	<property name="dir.build" 			value="${dir.exports}/coldbox-devbox" />
+		
+	<!-- Build Labels -->
+	<tstamp prefix="start"/>
+	<property name="build.label" 		value="devbox-buildID-${start.DSTAMP}${start.TSTAMP}"/>
+	
+	<!-- Build Labels -->
+	<tstamp prefix="start"/>
+	
+	<!-- Init -->
+	<target name="init" description="Init">
+		
+	</target>
+		
+	<!--build-->
+	<target name="build" description="Build a new devbox distribution" depends="init">
+      	
+		<!-- Copy build ID -->
+		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
+		<copy todir="${dir.build}/">
+        	<fileset dir=".">
+        		<exclude name=".git"/>
+        		<exclude name=".gitignore"/>
+        		<exclude name=".project"/>
+        		<exclude name="log/*.*"/>        		        		
+        		<exclude name="Icon"/>   
+        		<exclude name=".settings"/>
+        		<exclude name="settings.xml"/>
+        		<exclude name=".DS_Store"/>
+        	</fileset>
+        </copy>
+		
+		<zip destfile="${dir.exports}/coldbox-devbox.zip" basedir="${dir.build}"></zip>
+						
+    </target>
+</project>

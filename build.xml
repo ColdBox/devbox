@@ -41,7 +41,6 @@
 		<!-- Extract it -->
 		<unzip src="${dir.webroot}/coldbox-utilities.zip" dest="${dir.webroot}/coldbox-utilities" />
 		<!-- Delete zip -->
-		<delete file="${dir.webroot}/coldbox-utilities.zip" />
-			
+		<delete file="${dir.webroot}/coldbox-utilities.zip" />			
     </target>
 </project>
