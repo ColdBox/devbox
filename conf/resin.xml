@@ -46,9 +46,8 @@
   
   <!--
      - health configuration
-    -->
   <resin:import path="${__DIR__}/health.xml"/>
-
+  -->
   
   <!--
      - Remote management requires at least one enabled admin user.
