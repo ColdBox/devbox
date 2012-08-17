@@ -11,9 +11,13 @@ It includes a fully configured J2EE application server, Resin 4 with Railo,
 the open source CFML engine, deployed for you.  We have also installed a few nice 
 plugins into your Railo Administrator for memory monitoring, scope monitor and more.
 
-To start the DevBox you can either:
-Windows  - Run start.exe or the setup.exe to setup with Apache or IIS
-*nix/Mac - Run start.sh in the command line or in Mac -> right click -> Open With -> Terminal
+To start the DevBox:
+Windows  
+- Run start.exe or the setup.exe to setup with Apache or IIS
+
+*nix/Mac 
+- Make sure the files are executable, if not run: chmod -R 777 * to make files executable
+- Run start.sh in the command line or in Mac run the start.app
 
 The webroot path for your DevBox is:
 /coldbox-devbox/webapps/ROOT
