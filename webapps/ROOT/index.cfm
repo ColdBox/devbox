@@ -136,42 +136,51 @@
 			
 			<p>Below you will find a few applications deployed into your DevBox:</p>
 			
-			<h2>
-			ColdBox Dashboard
-			<a href="coldbox/dashboard/">
-				<button class="btn">
-					Open
-				</button>
-			</a>
-			<h2>
-			<p>
-				A cool looking application generator and helper application for the ColdBox Platform.
-			</p>
-			
-			<h2>
-			ColdBox API Docs
-			<a href="coldbox-docs/index.html">
-				<button class="btn">
-					Open
-				</button>
-			</a>
-			<h2>
-			<p>
-				The ColdBox Platform API docs.
-			</p>
-			
-			<h2>
-			ColdBox Samples Gallery
-			<a href="coldbox/samples/">
-				<button class="btn">
-					Open
-				</button>
-			</a>
-			<h2>
-			<p>
-				A nice collection of ColdBox Samples.
-			</p>
+			<table class="table table-striped">
+				<thead>
+					<th>Application</th>
+					<th>Description</th>
+					<th>Actions</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>ColdBox Dashboard</td>
+						<td>A cool looking application generator and helper application for the ColdBox Platform.</td>
+						<td>
+							<a href="coldbox/dashboard/">
+								<button class="btn">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>ColdBox API Docs</td>
+						<td>All the API docs you will ever need.</td>
+						<td>
+							<a href="coldbox-docs/index.html">
+								<button class="btn">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>ColdBox Samples Gallery</td>
+						<td>A collection of over 20 sample applications to get you started with ColdBox development.</td>
+						<td>
+							<a href="coldbox/samples">
+								<button class="btn">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
 			<br/>
+			
 			<div class="well">
 			
 				<h2>

@@ -849,6 +849,9 @@
 	<scopevar name="scanLocations(locations)">
 			<help><![CDATA[Register one or more package scan locations for CFC lookups]]></help>
 		</scopevar>
+	<scopevar name="setMapping(name,mapping)">
+			<help><![CDATA[Set a mapping object into the mappings map]]></help>
+		</scopevar>
 	<scopevar name="toFactoryMethod(factory,method)">
 			<help><![CDATA[Map to a factory and its executing method.]]></help>
 		</scopevar>
@@ -863,6 +866,9 @@
 		</scopevar>
 	<scopevar name="map(alias)">
 			<help><![CDATA[Create a mapping to an object]]></help>
+		</scopevar>
+	<scopevar name="unMap(name)">
+			<help><![CDATA[Destroys a mapping by name]]></help>
 		</scopevar>
 	<scopevar name="mappingExists(name)">
 			<help><![CDATA[Check if an object mapping exists]]></help>
@@ -1032,7 +1038,7 @@
 	<scopevar name="setHTTPHeader([statusCode],[statusText],[name],[value],[charset])">
 			<help><![CDATA[Set an HTTP Header]]></help>
 		</scopevar>
-	<scopevar name="setView([view],[nolayout],[cache],[cacheTimeout],[cacheLastAccessTimeout],[cacheSuffix],[layout],[module],[args])">
+	<scopevar name="setView([view],[nolayout],[cache],[cacheTimeout],[cacheLastAccessTimeout],[cacheSuffix],[cacheProvider],[layout],[module],[args])">
 			<help><![CDATA[I Set the view to render in this request. Private Request Collection Name: currentView, currentLayout]]></help>
 		</scopevar>
 	<scopevar name="getViewCacheableEntry()">
@@ -1228,7 +1234,7 @@
 			<help><![CDATA[Get the instance of ColdBox linked in this Injector. Empty if using standalone version]]></help>
 		</scopevar>
 	<scopevar name="registerNewInstance(name,instancePath)">
-			<help><![CDATA[Register a new requested mapping object instance thread safely and returns the binder configured for this instance]]></help>
+			<help><![CDATA[Register a new requested mapping object instance thread safely and returns the mapping configured for this instance]]></help>
 		</scopevar>
 	<scopevar name="doScopeRegistration()">
 			<help><![CDATA[Register this injector on a user specified scope]]></help>

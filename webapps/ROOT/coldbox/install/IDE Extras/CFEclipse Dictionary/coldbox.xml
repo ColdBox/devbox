@@ -844,6 +844,9 @@
 	<scope value="binder.scanLocations(locations)">
 			<help><![CDATA[Register one or more package scan locations for CFC lookups]]></help>
 		</scope>
+	<scope value="binder.setMapping(name,mapping)">
+			<help><![CDATA[Set a mapping object into the mappings map]]></help>
+		</scope>
 	<scope value="binder.toFactoryMethod(factory,method)">
 			<help><![CDATA[Map to a factory and its executing method.]]></help>
 		</scope>
@@ -858,6 +861,9 @@
 		</scope>
 	<scope value="binder.map(alias)">
 			<help><![CDATA[Create a mapping to an object]]></help>
+		</scope>
+	<scope value="binder.unMap(name)">
+			<help><![CDATA[Destroys a mapping by name]]></help>
 		</scope>
 	<scope value="binder.mappingExists(name)">
 			<help><![CDATA[Check if an object mapping exists]]></help>
@@ -1024,7 +1030,7 @@
 	<scope value="event.setHTTPHeader([statusCode],[statusText],[name],[value],[charset])">
 			<help><![CDATA[Set an HTTP Header]]></help>
 		</scope>
-	<scope value="event.setView([view],[nolayout],[cache],[cacheTimeout],[cacheLastAccessTimeout],[cacheSuffix],[layout],[module],[args])">
+	<scope value="event.setView([view],[nolayout],[cache],[cacheTimeout],[cacheLastAccessTimeout],[cacheSuffix],[cacheProvider],[layout],[module],[args])">
 			<help><![CDATA[I Set the view to render in this request. Private Request Collection Name: currentView, currentLayout]]></help>
 		</scope>
 	<scope value="event.getViewCacheableEntry()">
@@ -1217,7 +1223,7 @@
 			<help><![CDATA[Get the instance of ColdBox linked in this Injector. Empty if using standalone version]]></help>
 		</scope>
 	<scope value="wirebox.registerNewInstance(name,instancePath)">
-			<help><![CDATA[Register a new requested mapping object instance thread safely and returns the binder configured for this instance]]></help>
+			<help><![CDATA[Register a new requested mapping object instance thread safely and returns the mapping configured for this instance]]></help>
 		</scope>
 	<scope value="wirebox.doScopeRegistration()">
 			<help><![CDATA[Register this injector on a user specified scope]]></help>
