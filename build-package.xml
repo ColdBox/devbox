@@ -35,7 +35,9 @@
         		<exclude name=".project"/>
         		<exclude name="log/*.*"/>        		        		
         		<exclude name="Icon"/>   
-        		<exclude name=".settings"/>
+        		<exclude name="Icon"/>   
+        		<exclude name="resin-data/*.*"/>
+        		<exclude name="watchdog-data/*.*"/>
         		<exclude name="settings.xml"/>
         		<exclude name=".DS_Store"/>
         	</fileset>
