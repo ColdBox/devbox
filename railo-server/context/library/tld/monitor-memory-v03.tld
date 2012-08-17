@@ -1,0 +1,61 @@
+<!DOCTYPE taglib PUBLIC "-//Railo//DTD CFML Tag Library 1.0//EN"
+	"dtd/web-cfmtaglibrary_1_0.dtd">
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<cfml-version>1.0</cfml-version>
+	<short-name>monitor</short-name>
+	<uri>http://www.railo.ch/controller</uri>
+	<display-name>Monitor Memory</display-name>
+	<description/>
+	<name-space>cf</name-space>
+	<name-space-separator></name-space-separator>
+	<el>
+		<el-class>railo.transformer.cfml.expression.CFMLExprTransformer</el-class>
+	</el>
+	
+	
+	<!-- Monitor Memory --> 
+	<tag>
+		<name>MonitorMemory</name>
+		<tag-class>railo.extension.monitor.memory.v03.TagMonitorMemory</tag-class>
+		<body-content>empty</body-content>
+		<body-rtexprvalue>false</body-rtexprvalue>
+		<description></description>
+		<attribute-type>fixed</attribute-type>
+		<attribute>
+			<type>datetime</type>
+			<name>from</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>if set only records newer or equal to the given date are returnd</description>
+		</attribute>
+		<attribute>
+			<type>datetime</type>
+			<name>to</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>if set only records older or equal to the given date are returnd</description>
+		</attribute>
+		<attribute>
+			<type>number</type>
+			<name>maxrows</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>the maximum number of rows for the returning resultset generated.</description>
+		</attribute>
+		<attribute>
+			<type>string</type>
+			<name>serverpassword</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>password for the server admin. needed for action "scopes"</description>
+		</attribute>
+		<attribute>
+			<type>string</type>
+			<name>returnvariable</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Name of a variable for the result.</description>
+		</attribute>
+	</tag>
+</taglib>
