@@ -137,8 +137,76 @@
 				</h1>
 				<p>
 					This is your ultimate Open Source ColdBox & CFML development server!
+					<div class="centered">
+						<a class="btn" data-toggle="modal" href="##newAppModal" >Create New Application</a>
+					</div>
 				</p>
 			</div>
+			
+			<div class="modal hide fade" id="newAppModal">
+				<form method="post" action="/assets/template/generate.cfm" class="form-horizontal">
+				    
+				    <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal">×</button>
+					    <h3>Create New ColdBox App</h3>
+				    </div>
+					
+				    <div class="modal-body">
+					   <div class="control-group">
+							<label class="control-label" for="input01">Application Name: </label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" id="appname" name="appname" required="required">
+								<p class="help-block">This will be your directory name as well.</p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="input01">Choose Template: </label>
+							<div class="controls">
+								<select name="template" id="template">
+									<option value="advanced">Advanced</option>
+									<option value="flex">Flex-Air</option>
+									<option value="simple">Simple</option>
+									<option value="supersimple">Super Simple</option>
+								</select>
+								<p class="help-block">Your application will be based on this template.</p>
+							</div>
+						</div>
+						<div class="control-group">
+				            <label for="optionsCheckboxList" class="control-label">Options :</label>
+				            <div class="controls">
+				              <label class="checkbox">
+				                <input type="checkbox" value="true" checked="checked" name="create_eclipse">
+				                Create Eclipse Project
+				              </label>
+				            </div>
+							<div class="controls">
+				              <label class="checkbox">
+				                <input type="checkbox" value="true" checked="checked" name="create_cfbuilder">
+				                Create CFBuilder Nature
+				              </label>
+				            </div>
+				    	</div>
+					    
+				    </div>
+					
+				    <div class="modal-footer">
+				    	<a href="##" class="btn" data-dismiss="modal">Close</a>
+				  	  	<button type="submit" class="btn btn-primary">Submit</button>
+				    </div>
+				</form>
+		    </div>
+			
+			<cfif structKeyExists(url, "createdApp")>
+				<div class="alert alert-error">
+					Your application <strong>#urlDecode( url.createdApp )#</strong> was succesfully created! You can now start coding, woohoo!<br/>
+					<h2>App Location:
+						<a class="btn" href="/#urlDecode( url.createdApp )#" >Run Application</a>
+					</h2>
+					<pre>
+						#expandPath("/#urlDecode( url.createdApp )#")#
+					</pre>
+				</div>
+			</cfif>
 			
 			<div class="alert alert-success">
 				Below you will find a few applications deployed into your DevBox:
