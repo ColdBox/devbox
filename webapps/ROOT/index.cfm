@@ -253,6 +253,17 @@
 						</td>
 					</tr>
 					<tr>
+						<td>MXUnit</td>
+						<td>The best testing framework for ColdFusion.</td>
+						<td>
+							<a href="/mxunit">
+								<button class="btn btn-info">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+					<tr>
 						<td>ColdBox Platform Utilities</td>
 						<td>This extension helps you when building ColdBox Platform applications using <a href="http://www.adobe.com/products/coldfusion-builder.html">Adobe ColdFusion Builder IDE</a>. 
 						It will help you get started with application skeletons, to configuring URL rewriting, security and so much more. <br/><br/>
