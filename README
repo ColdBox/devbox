@@ -1,4 +1,44 @@
-ColdBox DevBox v1.0
+                                                                                                         
+                                                          dddddddd                                                       
+        CCCCCCCCCCCCC                 lllllll             d::::::dBBBBBBBBBBBBBBBBB                                      
+     CCC::::::::::::C                 l:::::l             d::::::dB::::::::::::::::B                                     
+   CC:::::::::::::::C                 l:::::l             d::::::dB::::::BBBBBB:::::B                                    
+  C:::::CCCCCCCC::::C                 l:::::l             d:::::d BB:::::B     B:::::B                                   
+ C:::::C       CCCCCC   ooooooooooo    l::::l     ddddddddd:::::d   B::::B     B:::::B   ooooooooooo xxxxxxx      xxxxxxx
+C:::::C               oo:::::::::::oo  l::::l   dd::::::::::::::d   B::::B     B:::::B oo:::::::::::oox:::::x    x:::::x 
+C:::::C              o:::::::::::::::o l::::l  d::::::::::::::::d   B::::BBBBBB:::::B o:::::::::::::::ox:::::x  x:::::x  
+C:::::C              o:::::ooooo:::::o l::::l d:::::::ddddd:::::d   B:::::::::::::BB  o:::::ooooo:::::o x:::::xx:::::x   
+C:::::C              o::::o     o::::o l::::l d::::::d    d:::::d   B::::BBBBBB:::::B o::::o     o::::o  x::::::::::x    
+C:::::C              o::::o     o::::o l::::l d:::::d     d:::::d   B::::B     B:::::Bo::::o     o::::o   x::::::::x     
+C:::::C              o::::o     o::::o l::::l d:::::d     d:::::d   B::::B     B:::::Bo::::o     o::::o   x::::::::x     
+ C:::::C       CCCCCCo::::o     o::::o l::::l d:::::d     d:::::d   B::::B     B:::::Bo::::o     o::::o  x::::::::::x    
+  C:::::CCCCCCCC::::Co:::::ooooo:::::ol::::::ld::::::ddddd::::::ddBB:::::BBBBBB::::::Bo:::::ooooo:::::o x:::::xx:::::x   
+   CC:::::::::::::::Co:::::::::::::::ol::::::l d:::::::::::::::::dB:::::::::::::::::B o:::::::::::::::ox:::::x  x:::::x  
+     CCC::::::::::::C oo:::::::::::oo l::::::l  d:::::::::ddd::::dB::::::::::::::::B   oo:::::::::::oox:::::x    x:::::x 
+        CCCCCCCCCCCCC   ooooooooooo   llllllll   ddddddddd   dddddBBBBBBBBBBBBBBBBB      ooooooooooo xxxxxxx      xxxxxxx
+                                                                                                                         
+                                                                                                                         
+DDDDDDDDDDDDD                                                 BBBBBBBBBBBBBBBBB                                      
+D::::::::::::DDD                                              B::::::::::::::::B                                     
+D:::::::::::::::DD                                            B::::::BBBBBB:::::B                                    
+DDD:::::DDDDD:::::D                                           BB:::::B     B:::::B                                   
+  D:::::D    D:::::D     eeeeeeeeeeee  vvvvvvv           vvvvvvvB::::B     B:::::B   ooooooooooo xxxxxxx      xxxxxxx
+  D:::::D     D:::::D  ee::::::::::::ee v:::::v         v:::::v B::::B     B:::::B oo:::::::::::oox:::::x    x:::::x 
+  D:::::D     D:::::D e::::::eeeee:::::eev:::::v       v:::::v  B::::BBBBBB:::::B o:::::::::::::::ox:::::x  x:::::x  
+  D:::::D     D:::::De::::::e     e:::::e v:::::v     v:::::v   B:::::::::::::BB  o:::::ooooo:::::o x:::::xx:::::x   
+  D:::::D     D:::::De:::::::eeeee::::::e  v:::::v   v:::::v    B::::BBBBBB:::::B o::::o     o::::o  x::::::::::x    
+  D:::::D     D:::::De:::::::::::::::::e    v:::::v v:::::v     B::::B     B:::::Bo::::o     o::::o   x::::::::x     
+  D:::::D     D:::::De::::::eeeeeeeeeee      v:::::v:::::v      B::::B     B:::::Bo::::o     o::::o   x::::::::x     
+  D:::::D    D:::::D e:::::::e                v:::::::::v       B::::B     B:::::Bo::::o     o::::o  x::::::::::x    
+DDD:::::DDDDD:::::D  e::::::::e                v:::::::v      BB:::::BBBBBB::::::Bo:::::ooooo:::::o x:::::xx:::::x   
+D:::::::::::::::DD    e::::::::eeeeeeee         v:::::v       B:::::::::::::::::B o:::::::::::::::ox:::::x  x:::::x  
+D::::::::::::DDD       ee:::::::::::::e          v:::v        B::::::::::::::::B   oo:::::::::::oox:::::x    x:::::x 
+DDDDDDDDDDDDD            eeeeeeeeeeeeee           vvv         BBBBBBBBBBBBBBBBB      ooooooooooo xxxxxxx      xxxxxxx
+                                                                                                                     
+                                                                                                                     
+                                                                                                                     
+       
+ColdBox DevBox v2.0
 Copyright (c) 2012 Ortus Solutions, Corp
 www.ortussolutions.com
 www.coldbox.org
@@ -48,9 +88,21 @@ To change the port for the application server you must configure it
 in the following file:
 /coldbox-devbox/conf/resin.properties
 
+To add more hostnames to different directories you can configur it in the: 'resin.xml'
+Just look for the <host> element(s) and add your own host element:
+
+<host id="www.coldbox.org" root-directory=".">
+  <web-app id="/" root-directory="webapps/mysite">
+  </web-app>
+</host>
+
 ==============================================
 ChangeLog
 ==============================================
+Version 2.0 
+# Updated all libraries to use Railo 4 Beta
+# Updated resin logging
+
 Version 1.0 
 # Initial release
 
