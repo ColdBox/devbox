@@ -8,7 +8,7 @@ Path placeholders:
 	{system-directory}: path to thesystem directory
 	{web-context-hash}: hash of the web context
 
---><railo-configuration password="87a2c917913de482a4b17435d1a1830bffd7aeb09ed5ad99" version="2.0"><cfabort/>
+--><railo-configuration password="a668683b81723c51a68df89d4be7f13226d4b586a418233a" version="2.0"><cfabort/>
 
 	<!--
 	system:
@@ -228,7 +228,7 @@ Path placeholders:
 	<!--
 		enable and disable debugging
 	 -->
-	<debugging debug="no" log-memory-usage="no" memory-log="{railo-config}/logs/memory.log" show-query-usage="no" template="/railo-context/templates/debugging/debugging.cfm"/>
+	<debugging debug="true" log-memory-usage="no" memory-log="{railo-config}/logs/memory.log" template=""/>
 	
 		<!--
 	application:
@@ -247,7 +247,7 @@ Path placeholders:
 	-->
 	<application listener-mode="curr2root" listener-type="mixed"/>
 	
-	<update location="http://dev.getrailo.org" type="manual"/>
+	<update location="http://www.getrailo.org" type="manual"/>
 	<!--
 	flex:
 		
@@ -263,4 +263,4 @@ Path placeholders:
 	-->
 	<flex configuration="xml"/>
 
-<extensions><provider url="http://preview.getrailo.org/ExtensionProvider.cfc"/></extensions></railo-configuration>
+<charset resource-charset="UTF-8" template-charset="UTF-8" web-charset="UTF-8"/><setting allow-compression="false" content-length="" suppress-content="false" suppress-whitespace="true"/></railo-configuration>
