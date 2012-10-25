@@ -17,5 +17,5 @@
 DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 $DIR/bin/resin.sh start
 echo You can now open your ColdBox DevBox at http://localhost:8081
-sleep 2
+sleep 5
 open http://localhost:8081
