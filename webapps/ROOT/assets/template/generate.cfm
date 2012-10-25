@@ -29,6 +29,7 @@
 	switch( form.template ){
 		case "advanced" : { templatePath = "Advanced"; break; }
 		case "flex" : { templatePath = "FlexAirRemote"; break; }
+		case "lite" : { templatePath = "lite"; break; }
 		case "simple" : { templatePath = "Simple"; break; }
 		case "supersimple" : { templatePath = "SuperSimple"; break; }
 	}

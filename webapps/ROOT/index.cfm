@@ -164,6 +164,7 @@
 							<div class="controls">
 								<select name="template" id="template">
 									<option value="advanced">Advanced</option>
+									<option value="lite">ColdBox LITE</option>
 									<option value="flex">Flex-Air</option>
 									<option value="simple">Simple</option>
 									<option value="supersimple">Super Simple</option>
