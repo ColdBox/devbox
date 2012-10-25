@@ -68,11 +68,6 @@
 										</a>
 									</li>
 									<li>
-										<a href="/coldbox/dashboard">
-											ColdBox Dashboard
-										</a>
-									</li>
-									<li>
 										<a href="/coldbox-docs/index.html">
 											ColdBox API Docs
 										</a>
@@ -221,17 +216,6 @@
 					<th>Actions</th>
 				</thead>
 				<tbody>
-					<tr>
-						<td>ColdBox Dashboard</td>
-						<td>A cool looking application generator and helper application for the ColdBox Platform.</td>
-						<td>
-							<a href="coldbox/dashboard/">
-								<button class="btn btn-info">
-									Open
-								</button>
-							</a>
-						</td>
-					</tr>
 					<tr>
 						<td>ColdBox Samples Gallery</td>
 						<td>A collection of over 20 sample applications to get you started with ColdBox development.</td>
