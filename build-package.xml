@@ -43,7 +43,7 @@
         	</fileset>
         </copy>
 		
-		<zip destfile="${dir.exports}/coldbox-devbox_${devbox.version}.zip" basedir="${dir.build}"></zip>
+		<zip destfile="${dir.exports}/coldbox-devbox_${devbox.version}.zip" basedir="${dir.build}" preserve0permissions="true"></zip>
 						
     </target>
 </project>

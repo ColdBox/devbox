@@ -106,6 +106,18 @@
         <web-app id="/resin-doc" root-directory="${resin.root}/doc/resin-doc"/>
       </resin:if>
     </host>
+
+    <!-- YOU CAN ADD MORE CUSTOM HOSTS HERE
+      - add your hostname to the 'id' attribute of the 'host' element
+      - add the 'root-directory' of where you are storing the documents
+
+    <host id="www.coldbox.org" root-directory=".">
+      <web-app id="/" root-directory="webapps/mysite">
+      </web-app>
+    </host>
+
+    -->
+
   </cluster>
 
   <cluster id="web">

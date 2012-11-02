@@ -8,3 +8,4 @@ log/
 resin-data/
 Icon*
 webapps/ROOT/coldbox/dashboard/logs
+rest.log

@@ -1,4 +1,4 @@
-<cffunction name="directoryCopy" output="true" hint="Copies an entire source directory to a destination directory" returntype="void">
+<cffunction name="copyDirectory" output="true" hint="Copies an entire source directory to a destination directory" returntype="void">
 	<cfargument name="source" 		required="true" type="string">
 	<cfargument name="destination" 	required="true" type="string">
 	<cfargument name="nameconflict" required="true" default="overwrite">
@@ -15,7 +15,7 @@
 		<cfif contents.type eq "file">
 			<cffile action="copy" source="#arguments.source#/#name#" destination="#arguments.destination#/#name#" nameconflict="#arguments.nameConflict#">
 		<cfelseif contents.type eq "dir">
-			<cfset directoryCopy(arguments.source & "/" & name, arguments.destination & "/" & name, arguments.nameconflict) />
+			<cfset copyDirectory(arguments.source & "/" & name, arguments.destination & "/" & name, arguments.nameconflict) />
 		</cfif>
 	</cfloop>
 </cffunction>
@@ -29,12 +29,13 @@
 	switch( form.template ){
 		case "advanced" : { templatePath = "Advanced"; break; }
 		case "flex" : { templatePath = "FlexAirRemote"; break; }
+		case "lite" : { templatePath = "lite"; break; }
 		case "simple" : { templatePath = "Simple"; break; }
 		case "supersimple" : { templatePath = "SuperSimple"; break; }
 	}
 	templatePath = root & "/" & "coldbox/ApplicationTemplates/" & templatePath;
 	
-	directoryCopy(source=templatePath, destination=dirLocation);
+	copyDirectory(source=templatePath, destination=dirLocation);
 	
 	if( structKeyExists( form, "create_eclipse") ){
 		eclipseText = fileRead( root & '/assets/template/.project' );

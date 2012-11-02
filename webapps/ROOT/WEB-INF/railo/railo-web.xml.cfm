@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><railo-configuration password="4382bb71bd97fc45ac7678c5149bd49ff71e3deb67154a54" version="2.0"><cfabort/>
+<?xml version="1.0" encoding="UTF-8"?><railo-configuration password="37f95012a8863bf3ca948202e4004a7528cfe14d8645289b" version="2.0"><cfabort/>
 
 <!-- 
 Path placeholders:
@@ -150,6 +150,6 @@ Path placeholders:
 	 -->
 	<debugging template="/railo-context/templates/debugging/debugging.cfm"/>
 		
-	<application application-log="{railo-web}/logs/application.log" application-log-level="error" cache-directory="{railo-web}/cache/" cache-directory-max-size="100mb" exception-log="{railo-web}/logs/exception.log" exception-log-level="error" trace-log="{railo-web}/logs/trace.log" trace-log-level="info"/>
+	<application application-log="{railo-web}/logs/application.log" application-log-level="info" cache-directory="{railo-web}/cache/" cache-directory-max-size="100mb" exception-log="{railo-web}/logs/exception.log" exception-log-level="info" trace-log="{railo-web}/logs/trace.log" trace-log-level="info"/>
 	
 </railo-configuration>
