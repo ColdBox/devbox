@@ -31,6 +31,8 @@
 		<copy todir="${dir.build}/">
         	<fileset dir=".">
         		<exclude name=".git"/>
+        		<exclude name=".build.xml"/>
+        		<exclude name=".build-package.xml"/>
         		<exclude name=".gitignore"/>
         		<exclude name=".project"/>
         		<exclude name="log/*.*"/>        		        		
