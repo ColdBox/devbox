@@ -38,7 +38,7 @@ DDDDDDDDDDDDD            eeeeeeeeeeeeee           vvv         BBBBBBBBBBBBBBBBB 
                                                                                                                      
                                                                                                                      
        
-ColdBox DevBox v2.2
+ColdBox DevBox v2.3
 Copyright (c) 2012 Ortus Solutions, Corp
 www.ortussolutions.com
 www.coldbox.org
@@ -99,6 +99,10 @@ Just look for the <host> element(s) and add your own host element:
 ==============================================
 ChangeLog
 ==============================================
+Version 2.3
+# Updated railo engine
+# Updated to ColdBox 3.6.0
+
 Version 2.2
 # Updated engine to Railo 4 final
 
