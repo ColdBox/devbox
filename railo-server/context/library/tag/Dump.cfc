@@ -33,7 +33,8 @@ component {
 - html (default when output  equal ""browser""): regular output with html/css/javascript
 - classic: classic view with html/css/javascript"},
 		abort:{required:false,type:"boolean",default:false,hint="stops further processing of request."},
-		contextlevel:{required:false,type:"number",default:2,hidden:true}
+		contextlevel:{required:false,type:"number",default:2,hidden:true},
+		async:{required:false, type="boolean", default=false, hint="if true and output is not to browser, Railo builds the output in a new thread that runs in parallel to the thread that called the dump.  please note that if the calling thread modifies the data before the dump takes place, it is possible that the dump will show the modified data."}
 	};
 
 
@@ -66,7 +67,13 @@ component {
 		var context = GetCurrentContext();
 		var contextLevel = structKeyExists(attrib,'contextLevel') ? attrib.contextLevel : 2;
 		contextLevel = min(contextLevel,arrayLen(context));
-		context = context[contextLevel].template & ":" & context[contextLevel].line;
+		if ( contextLevel gt 0 ) {
+			context = context[contextLevel].template & ":" &
+					context[contextLevel].line;
+		}
+		else {
+			context = '[unknown file]:[unknown line]';
+		}
 
 		// format
 		attrib['format'] = trim(attrib.format);
@@ -76,7 +83,7 @@ component {
 			else if(attrib.output EQ "browser") attrib['format'] = variables.default.browser;
 			else                                attrib['format'] = variables.default.console;
 		}
-		else if(not arrayFindNoCase(supportedFormats, attrib.format)){
+		else if( !arrayFindNoCase( variables.supportedFormats, attrib.format ) ) {
 			throw message="format [#attrib.format#] is not supported, supported formats are [#arrayToList(supportedFormats)#]";
 		}
 
@@ -87,30 +94,50 @@ component {
 		catch(e) {
 			var meta = dumpStruct(structKeyExists(attrib,'var') ? attrib.var : nullValue(), attrib.top, attrib.show, attrib.hide, attrib.keys, attrib.metaInfo, attrib.showUDFs);
 		}
-		var dumpID = createId();
+		
 
-		// create output
-		var hasReference = structKeyExists(meta,'hasReference') && meta.hasReference;
-		var result = this[attrib.format](meta, context, attrib.expand, attrib.output, hasReference, 0, dumpID);
+		if ( attrib.async && ( attrib.output NEQ "browser" ) ) {
 
-		// output
-		if(attrib.output EQ "browser") {
-			echo(variables.NEWLINE & '<!-- ==start== dump #now()# format: #attrib.format# -->' & variables.NEWLINE);
-			echo('<div id="#dumpID#">#result#</div>' & variables.NEWLINE);
-			echo('<!-- ==stop== dump -->' & variables.NEWLINE);
-		}
-		else if(attrib.output EQ "console") {
-			systemOutput(result);
-		}
-		else {
-			file action="write" addnewline="yes" file="#attrib.output#" output="#result#";
+			thread name="dump-#createUUID()#" attrib="#attrib#" meta="#meta#" context="#context#" caller="#arguments.caller#" {
+
+				doOutput( attrib, meta, context, caller );
+			}
+		} else {
+
+			doOutput( attrib, meta, context, arguments.caller );
 		}
 
-		// abort
-		if(attrib.abort) abort;
+
+		if( attrib.abort )
+			abort;
 
 		return true;
 	}
+
+
+	function doOutput( attrib, meta, context, caller  ) {
+
+		var dumpID = createId();
+
+		var hasReference = structKeyExists( arguments.meta,'hasReference' ) && arguments.meta.hasReference;
+		var result = this[ arguments.attrib.format ]( arguments.meta, arguments.context, arguments.attrib.expand, arguments.attrib.output, hasReference, 0, dumpID );
+
+		// sleep( 5000 );	// simulate long process to test async=true
+		
+		if (arguments.attrib.output EQ "browser") {
+
+			echo(variables.NEWLINE & '<!-- ==start== dump #now()# format: #arguments.attrib.format# -->' & variables.NEWLINE);
+			echo('<div id="#dumpID#" class="-railo-dump">#result#</div>' & variables.NEWLINE);
+			echo('<!-- ==stop== dump -->' & variables.NEWLINE);
+		}
+		else if (arguments.attrib.output EQ "console") {
+			systemOutput(result);
+		}
+		else {
+			file action="write" addnewline="yes" file="#arguments.attrib.output#" output="#result#";
+		}
+	}
+
 
 	/* ==================================================================================================
 	   html                                                                                             =
@@ -140,7 +167,7 @@ component {
 				var comment = structKeyExists(arguments.meta,'comment') ? "<br />" & replace(HTMLEditFormat(arguments.meta.comment),chr(10),' <br>','all') : '';
 
 				rtn&=('<tr>');
-				rtn&=('<td class="#doCSSColors(arguments.cssColors,arguments.meta.highLightColor)#" onclick="dumpOC(''#id#'');" colspan="#columnCount#">');
+				rtn&=('<td class="#doCSSColors(arguments.cssColors,arguments.meta.highLightColor)#" onclick="dumpOC(''#id#'');" colspan="#columnCount#" style="cursor:pointer;">');
 				rtn&=('<span>#arguments.meta.title##metaID#</span>');
 				rtn&=(comment & '</td>');
 				rtn&=('</tr>');
@@ -277,7 +304,7 @@ component {
 				var comment = structKeyExists(arguments.meta,'comment') ? "<br />" & replace(HTMLEditFormat(arguments.meta.comment),chr(10),' <br>','all') : '';
 
 				rtn&=('<tr>');
-				rtn&=('<td onclick="dumpOC(''#id#'');" colspan="#columnCount#" style="background:#h1Color#; border-color:#borderColor#; color:white;">');
+				rtn&=('<td onclick="dumpOC(''#id#'');" colspan="#columnCount#" style="background:#h1Color#; border-color:#borderColor#; color:white;" style="cursor:pointer;">');
 				rtn&=('<span>#arguments.meta.title##metaID#</span>');
 				rtn&=(comment & '</td>');
 				rtn&=('</tr>');
