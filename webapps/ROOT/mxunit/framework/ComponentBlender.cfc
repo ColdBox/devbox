@@ -42,7 +42,6 @@
 		</cfif>
 		<cfif structKeyExists( variables, propertyName )>
 			<cfset variables[newPropertyName] = variables[propertyName]>
-			<cfset this[newPropertyName] = variables[newPropertyName]>
 		</cfif>
     </cffunction>
 

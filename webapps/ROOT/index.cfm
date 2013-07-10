@@ -68,6 +68,11 @@
 										</a>
 									</li>
 									<li>
+										<a href="/coldbox/litesamples">
+											ColdBox LITE Samples Gallery
+										</a>
+									</li>
+									<li>
 										<a href="/coldbox-docs/index.html">
 											ColdBox API Docs
 										</a>
@@ -221,6 +226,17 @@
 						<td>A collection of over 20 sample applications to get you started with ColdBox development.</td>
 						<td>
 							<a href="coldbox/samples">
+								<button class="btn btn-info">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>ColdBox LITE Samples Gallery</td>
+						<td>A collection of ColdBox LITE sample apps.</td>
+						<td>
+							<a href="coldbox/litesamples">
 								<button class="btn btn-info">
 									Open
 								</button>

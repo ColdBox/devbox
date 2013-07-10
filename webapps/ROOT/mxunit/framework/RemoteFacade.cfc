@@ -1,8 +1,8 @@
 <cfcomponent name="mxunit.framework.RemoteFacade" hint="Main default interface into MXUnit framework from the MXUnit Ecplise Plugin." wsversion="1">
 
-	<cfset cu = createObject("component","mxunit.framework.ComponentUtils")>
-	<cfset cache = createObject("component","mxunit.framework.RemoteFacadeObjectCache")>
-	<cfset ConfigManager = createObject("component","mxunit.framework.ConfigManager")>
+	<cfset cu = createObject("component","ComponentUtils")>
+	<cfset cache = createObject("component","RemoteFacadeObjectCache")>
+	<cfset ConfigManager = createObject("component","ConfigManager")>
 
 	<cffunction name="ping" output="false" access="remote" returntype="boolean" hint="returns true">
 		<cfreturn true>
@@ -21,11 +21,11 @@
 	</cffunction>
 
 	<cffunction name="getFrameworkVersion" output="false" access="remote" returntype="String" hint="returns the current framework version in form of major.minor.buildnum">
-		<cfreturn createObject("component","mxunit.framework.VersionReader").getVersionInfo().VersionNumber>
+		<cfreturn createObject("component","VersionReader").getVersionInfo().VersionNumber>
 	</cffunction>
 
 	<cffunction name="getFrameworkDate" output="false" access="remote" returntype="Date" hint="returns the current framework version date in form of mm/dd/yyyy">
-		<cfreturn createObject("component","mxunit.framework.VersionReader").getVersionInfo().VersionDate>
+		<cfreturn createObject("component","VersionReader").getVersionInfo().VersionDate>
 	</cffunction>
 
 	<cffunction name="startTestRun" access="remote" returntype="string">
@@ -49,25 +49,6 @@
 
 	<cffunction name="endTestRun" access="remote" returntype="string" hint="ensures proper cleanup">
 		<cfargument name="TestRunKey" type="string" required="true" hint="the key returned from startTestRun; used for managing the pool of components">
-		
-		<!---run all components' afterTests() --->
-		<cfset var pool = cache.getSuitePool()>
-		<cfset var componentName = "">
-		<cfset var testCase = "">
-		
-		<cfif structKeyExists( pool, testRunKey )>
-			<cfloop collection="#pool[testRunKey].components#" item="componentName">
-				<cftry>
-					<cfset testCase = pool[testRunKey].components[componentName]>
-					<cfset testCase.enableAfterTests()>
-					<cfset testCase.afterTests()>
-				
-				<cfcatch>
-					<cflog text="MXUnit afterTests() Exception from Eclipse Remote Facade. Component Name: #componentName#. Error: #cfcatch.message#; #cfcatch.detail#">
-				</cfcatch>
-				</cftry>
-			</cfloop>
-		</cfif>
 		<cfreturn cache.endTestRun(TestRunKey)>
 	</cffunction>
 
@@ -77,7 +58,7 @@
 		<cfargument name="TestRunKey" type="string" required="true" hint="the key returned from startTestRun; used for managing the pool of components">
 		<cfset var s_results = structNew()>
 		<cfset var key = "">
-		<cfset var suite = createObject("component","mxunit.framework.TestSuite")>
+		<cfset var suite = createObject("component","TestSuite")>
 		<cfset var testResult = "">
 		<!--- the "baseTarget" is the actual test case, underneath its layers of test decorators. When we start the test case, we want the pure object, not the decorated object --->
 		<cfset var obj = getObject(componentName, TestRunKey).getBaseTarget()>
@@ -86,10 +67,7 @@
 		<cfset suite.enableRequestScopeDebugging()>
 
 		<cfset actOnTestCase(obj)>
-		
-		<!--- disable afterTests... we'll run them all during endTestRun --->
-		<cfset obj.disableAfterTests()>
-		
+
 		<cfif len(methodNames)>
 			<cfset suite.add(componentName, methodNames, obj)>
 		 <cfelse>
@@ -183,7 +161,7 @@
 					<!---		 --->
 				<cfloop from="1" to="#ArrayLen(s_test.error.tagcontext)#" index="tag">
 					<cfif FileExists(s_test.error.tagcontext[tag].template)>
-						<!---<cflog text=" #s_test.error.tagcontext[tag].template# #isFrameworkTest# OR NOT #cu.isFrameworkTemplate(s_test.error.tagcontext[tag].template)#" >--->
+						<cflog text=" #s_test.error.tagcontext[tag].template# #isFrameworkTest# OR NOT #cu.isFrameworkTemplate(s_test.error.tagcontext[tag].template)#" >
 						<cfif isFrameworkTest OR NOT cu.isFrameworkTemplate(s_test.error.tagcontext[tag].template)>
 							<cfset t.TAGCONTEXT[i] = structNew()>
 							<cfset t.TAGCONTEXT[i].FILE = s_test.error.tagcontext[tag].template>

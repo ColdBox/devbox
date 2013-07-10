@@ -43,10 +43,7 @@
 			</cfif>
 			
 			<!--- Invoke prior to tests. Class-level setUp --->
-			<cfif testCase.okToRunBeforeTests()>
-				<cfset testCase.beforeTests() />
-				<cfset testCase.disableBeforeTests()>
-			</cfif>
+			<cfset testCase.beforeTests() />
 			
 			<cfif len(arguments.testMethod)>
 				<cfset runTestMethod(testCase, testMethod, results, currentTestSuiteName) />
@@ -57,10 +54,7 @@
 			</cfif>
 			
 			<!--- Invoke after tests. Class-level tearDown --->
-			<cfif testCase.okToRunAfterTests()>
-				<cfset testCase.afterTests() />
-				<cfset testCase.disableAfterTests()>
-			</cfif>
+			<cfset testCase.afterTests()>
 		</cfloop>
 
 		<cfset results.closeResults() /><!--- Get correct time run for suite --->
