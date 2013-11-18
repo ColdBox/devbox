@@ -1,15 +1,14 @@
 ﻿<cfscript>
 component {
 
-	ColorCaster=createObject('java','railo.commons.color.ColorCaster');
-	NEWLINE="
+	variables.NEWLINE="
 ";
-	TAB = chr(9);
-	default={};
-	default.browser="html";
-	default.console="text";
-	supportedFormats=["simple","text","html","classic"];
-
+	variables.TAB = chr(9);
+	variables.default={};
+	variables.default.browser="html";
+	variables.default.console="text";
+	variables.supportedFormats=["simple","text","html","classic"];
+	
 	// Meta data
 	this.metadata.hint="Outputs the elements, variables and values of most kinds of CFML objects. Useful for debugging. You can display the contents of simple and complex variables, objects, components, user-defined functions, and other elements.";
 	this.metadata.attributetype="fixed";
@@ -84,7 +83,7 @@ component {
 			else                                attrib['format'] = variables.default.console;
 		}
 		else if( !arrayFindNoCase( variables.supportedFormats, attrib.format ) ) {
-			throw message="format [#attrib.format#] is not supported, supported formats are [#arrayToList(supportedFormats)#]";
+			throw message="format [#attrib.format#] is not supported, supported formats are [#arrayToList(variables.supportedFormats)#]";
 		}
 
 		// create dump struct out of the object
@@ -131,7 +130,7 @@ component {
 			echo('<!-- ==stop== dump -->' & variables.NEWLINE);
 		}
 		else if (arguments.attrib.output EQ "console") {
-			systemOutput(result);
+			systemOutput(result,true);
 		}
 		else {
 			file action="write" addnewline="yes" file="#arguments.attrib.output#" output="#result#";
@@ -209,7 +208,7 @@ component {
 			// Header
 			if(arguments.level EQ 0){
 				// javascript
-				var head=('<script language="JavaScript" type="text/javascript">' & NEWLINE);
+				var head=('<script language="JavaScript" type="text/javascript">' & variables.NEWLINE);
 				head&=("function dumpOC(name){");
 				head&=("var tds=document.all?document.getElementsByTagName('tr'):document.getElementsByName(name);");
 				head&=("var s=null;");
@@ -220,18 +219,18 @@ component {
 				head&=("if(s.display=='none') s.display='';");
 				head&=("else s.display='none';");
 				head&=("}");
-				head&=("}"& NEWLINE);
-				head&=("</script>" & NEWLINE);
+				head&=("}"& variables.NEWLINE);
+				head&=("</script>" & variables.NEWLINE);
 
 				// styles
-				head&=('<style type="text/css">' & NEWLINE);
-				head&=('div###arguments.dumpID# table {font-family:Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:11px; empty-cells:show; color:#arguments.meta.fontColor#; border-spacing: 1px}' & NEWLINE);
-				head&=('div###arguments.dumpID# td {border:1px solid #arguments.meta.borderColor#; vertical-align:top; padding:2px; empty-cells:show;}' & NEWLINE);
-				head&=('div###arguments.dumpID# td span {font-weight:bold;}' & NEWLINE);
+				head&=('<style type="text/css">' & variables.NEWLINE);
+				head&=('div###arguments.dumpID# table {font-family:Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:11px; empty-cells:show; color:#arguments.meta.fontColor#; border-spacing: 1px}' & variables.NEWLINE);
+				head&=('div###arguments.dumpID# td {border:1px solid #arguments.meta.borderColor#; vertical-align:top; padding:2px; empty-cells:show;}' & variables.NEWLINE);
+				head&=('div###arguments.dumpID# td span {font-weight:bold;}' & variables.NEWLINE);
 				loop collection="#arguments.cssColors#" item="local.key" {
-					head&="td.#key# {background-color:#arguments.cssColors[key]#;}"& NEWLINE;
+					head&="td.#key# {background-color:#arguments.cssColors[key]#;}"& variables.NEWLINE;
 				}
-				head&=('</style>' & NEWLINE);
+				head&=('</style>' & variables.NEWLINE);
 
 				rtn=head&rtn;
 			}
@@ -257,43 +256,38 @@ component {
 		var title = !arguments.level ? ' title="#arguments.context#"' : '';
 		var width = structKeyExists(arguments.meta,'width') ? ' width="' & arguments.meta.width & '"' : '';
 		var height = structKeyExists(arguments.meta,'height') ? ' height="' & arguments.meta.height & '"' : '';
-		var indent = repeatString(TAB, arguments.level);
+		var indent = repeatString(variables.TAB, arguments.level);
 
 		// define colors
 		var h1Color = arguments.meta.highLightColor;
 		var h2Color = arguments.meta.normalColor;
-		var borderColor = arguments.meta.highLightColor;
+		var borderColor = darkenColor( arguments.meta.highLightColor );
 
 		arguments.meta.normalColor = "white";
-
-		try {
-			borderColor = ColorCaster.toHexString(ColorCaster.toColor(h1Color).darker().darker());
-		}
-		catch(e) {}
 
 
 			if(arguments.level EQ 0){
 				// javascript
-				rtn&=('<script language="JavaScript" type="text/javascript">' & NEWLINE);
+				rtn&=('<script language="JavaScript" type="text/javascript">' & variables.NEWLINE);
 				rtn&=("function dumpOC(name){");
 				rtn&=("var tds=document.all?document.getElementsByTagName('tr'):document.getElementsByName(name);" );
 				rtn&=("var s=null;");
 				rtn&=("name=name;");
 				rtn&=("for(var i=0;i<tds.length;i++) {" );
 				rtn&=("if(document.all && tds[i].name!=name)continue;");
-				rtn&=("s=tds[i].style;" & NEWLINE);
+				rtn&=("s=tds[i].style;" & variables.NEWLINE);
 				rtn&=("if(s.display=='none') s.display='';");
 				rtn&=("else s.display='none';");
 				rtn&=("}" );
-				rtn&=("}" & NEWLINE);
-				rtn&=("</script>" & NEWLINE);
+				rtn&=("}" & variables.NEWLINE);
+				rtn&=("</script>" & variables.NEWLINE);
 
 				// styles
-				rtn&=('<style type="text/css">' & NEWLINE);
-				rtn&=( 'div###arguments.dumpID# table {font-family:Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:11px; empty-cells:show; color:#arguments.meta.fontColor#; border: 1px solid black; border-collapse:collapse;}' & NEWLINE);
-				rtn&=( 'div###arguments.dumpID# td {border:1px solid #arguments.meta.borderColor#; vertical-align:top; padding:2px; empty-cells:show;}' & NEWLINE);
-				rtn&=('div###arguments.dumpID# td span {font-weight:bold;}' & NEWLINE);
-				rtn&=('</style>' & NEWLINE);
+				rtn&=('<style type="text/css">' & variables.NEWLINE);
+				rtn&=( 'div###arguments.dumpID# table {font-family:Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:11px; empty-cells:show; color:#arguments.meta.fontColor#; border: 1px solid black; border-collapse:collapse;}' & variables.NEWLINE);
+				rtn&=( 'div###arguments.dumpID# td {border:1px solid #arguments.meta.borderColor#; vertical-align:top; padding:2px; empty-cells:show;}' & variables.NEWLINE);
+				rtn&=('div###arguments.dumpID# td span {font-weight:bold;}' & variables.NEWLINE);
+				rtn&=('</style>' & variables.NEWLINE);
 			}
 
 			rtn&=('<table cellspacing="0"#width##height##title# style="color:#arguments.meta.fontColor#; border-color:#borderColor#;">');
@@ -360,7 +354,7 @@ component {
 		var columnCount = structKeyExists(arguments.meta,'data') ? listLen(arguments.meta.data.columnlist) : 0;
 		var width = structKeyExists(arguments.meta,'width') ? ' width="' & arguments.meta.width & '"' : '';
 		var height = structKeyExists(arguments.meta,'height') ? ' height="' & arguments.meta.height & '"' : '';
-		var indent = repeatString(TAB, arguments.level);
+		var indent = repeatString(variables.TAB, arguments.level);
 
 
 			rtn&=( '<table cellpadding="1" cellspacing="0" border="1" title="#arguments.context#"#width##height#>');
@@ -429,7 +423,7 @@ component {
 			rtn = trim(arguments.meta.title);
 			rtn &= arguments.hasReference && structKeyExists(arguments.meta,'id') ? ' [#arguments.meta.id#]' : '';
 			rtn &= structKeyExists(arguments.meta,'comment') ? ' [' & trim(arguments.meta.comment) & ']' : '';
-			rtn &= NEWLINE;
+			rtn &= variables.NEWLINE;
 		}
 
 		// data
@@ -444,7 +438,7 @@ component {
 
 					if(type EQ "udf") {
 						if(needNewLine) {
-							rtn &= NEWLINE & arguments.parentIndent;
+							rtn &= variables.NEWLINE & arguments.parentIndent;
 							rtn &= len(trim(node)) EQ 0 ? "[blank] " : node & " ";
 							needNewLine = false;
 						}
@@ -453,13 +447,13 @@ component {
 						}
 					}
 					else if(isStruct(node)) {
-						rtn &= this.text(node, "", arguments.expand, arguments.output, arguments.hasReference, arguments.level+1, indent) & NEWLINE;
+						rtn &= this.text(node, "", arguments.expand, arguments.output, arguments.hasReference, arguments.level+1, indent) & variables.NEWLINE;
 					}
 					else if(len(trim(node)) GT 0) {
 						var test = asc(right(rtn, 1));
 
 						if( test EQ 10 || test EQ 13) {
-							rtn &= arguments.parentIndent & node & " ";
+							rtn &= node & " ";
 						}
 						else {
 							rtn &= node & " ";
@@ -485,7 +479,7 @@ component {
 							 string highLightColor = "#arguments.meta.highLightColor#" ) {
 
 		if(arguments.meta.data.highlight EQ -1) {
-			return highLightColor;
+			return arguments.highLightColor;
 		}
 		else if(arguments.meta.data.highlight EQ 0) {
 			return arguments.meta.normalColor;
@@ -510,6 +504,43 @@ component {
 		return key;
 	}
 
+
+	/** darkens a hex color */
+	function darkenColor( color, delta=3 ) {
+
+		if ( len( arguments.color ) != 7 || left( arguments.color, 1 ) != '##' )
+			return arguments.color;
+
+		var result = "##";
+
+		for ( var i=2; i<=7; i++ ) {
+
+			var ch = inputBaseN( mid( arguments.color, i, 1 ), 16 );
+			ch = max( 0, ch - arguments.delta );
+			result &= formatBaseN( ch, 16 );
+		}
+
+		return result;
+	}
+
+
+	/** brightens a hex color */
+	function brightenColor( color, delta=3 ) {
+
+		if ( len( arguments.color ) != 7 || left( arguments.color, 1 ) != '##' )
+			return arguments.color;
+
+		var result = "##";
+
+		for ( var i=2; i<=7; i++ ) {
+
+			var ch = inputBaseN( mid( arguments.color, i, 1 ), 16 );
+			ch = min( 15, ch + arguments.delta );
+			result &= formatBaseN( ch, 16 );
+		}
+
+		return result;
+	}
 
 }
 </cfscript>
