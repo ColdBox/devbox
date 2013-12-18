@@ -73,8 +73,18 @@
 										</a>
 									</li>
 									<li>
-										<a href="/coldbox-docs/index.html">
+										<a href="/apidocs/index.html">
 											ColdBox API Docs
+										</a>
+									</li>
+									<li>
+										<a href="/coldbox/test-browser">
+											TestBox Test Browser
+										</a>
+									</li>
+									<li>
+										<a href="/coldbox/test-runner">
+											TestBox Test Runner
 										</a>
 									</li>
 								</ul>
@@ -164,6 +174,7 @@
 							<div class="controls">
 								<select name="template" id="template">
 									<option value="advanced">Advanced</option>
+									<option value="advanced-script">Advanced Script</option>
 									<option value="lite">ColdBox LITE</option>
 									<option value="flex">Flex-Air</option>
 									<option value="simple">Simple</option>
@@ -255,10 +266,21 @@
 						</td>
 					</tr>
 					<tr>
-						<td>MXUnit</td>
-						<td>The best testing framework for ColdFusion.</td>
+						<td>TestBox Test Browser</td>
+						<td>The ultimate BDD and xUnit testing framework for ColdFusion.</td>
 						<td>
-							<a href="/mxunit">
+							<a href="/coldbox/test-browser">
+								<button class="btn btn-info">
+									Open
+								</button>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td>TestBox Test Runner</td>
+						<td>The ultimate BDD and xUnit testing framework for ColdFusion.</td>
+						<td>
+							<a href="/coldbox/test-runner">
 								<button class="btn btn-info">
 									Open
 								</button>
