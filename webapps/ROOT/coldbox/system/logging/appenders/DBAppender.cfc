@@ -157,8 +157,15 @@ If you are building a mapper, the map must have the above keys in it.
 	<!--- rotationCheck --->    
     <cffunction name="rotationCheck" output="false" access="public" returntype="any" hint="Rotation checks">    
     	<cfscript>	    
-			// Verify if in rotation frequency
-			if( isDate( instance.lastDBRotation ) AND dateDiff( "n",  instance.lastDBRotation, now() ) LTE getProperty( "rotationFrequency" ) ){
+			// Verify if in rotation frequency or rotate is disabled.
+			if(
+				not getProperty( "rotate" ) 
+				OR 
+				(
+				isDate( instance.lastDBRotation ) AND 
+				dateDiff( "n",  instance.lastDBRotation, now() ) LTE getProperty( "rotationFrequency" ) 
+				)
+			   )
 				return;
 			}
 			
